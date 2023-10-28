@@ -23,6 +23,24 @@ public class DailyPlanner
     private DateTime currentDate = DateTime.Today;
     private int currentNoteIndex = 0;
 
+    public DailyPlanner()
+    {
+        
+        notes.Add(new Note("Заметка 1", "Описание заметки 1", currentDate));
+        notes.Add(new Note("Заметка 2", "Описание заметки 2", currentDate));
+     
+        currentDate = currentDate.AddDays(1);
+
+        notes.Add(new Note("Заметка 3", "Описание заметки 3", currentDate));
+        notes.Add(new Note("Заметка 4", "Описание заметки 4", currentDate));
+
+        currentDate = currentDate.AddDays(1);
+
+        notes.Add(new Note("Заметка 5", "Описание заметки 5", currentDate));
+        notes.Add(new Note("Заметка 6", "Описание заметки 6", currentDate));
+    }
+
+
     public void AddNote()
     {
         Console.Write("Введите название заметки: ");
@@ -60,6 +78,7 @@ public class DailyPlanner
         {
             Console.Clear();
             ShowNotes(currentDate);
+
             Console.WriteLine("\nИспользуйте стрелки влево/вправо для навигации.");
             Console.WriteLine("Нажмите Enter, чтобы открыть заметку.");
             Console.WriteLine("Нажмите Home, чтобы добавить новую заметку.");
@@ -106,7 +125,7 @@ public class DailyPlanner
                     currentNoteIndex++;
                     if (currentNoteIndex >= notes.Count)
                         currentNoteIndex = notes.Count - 1;
-                    break;
+                    break;  
                 case ConsoleKey.End:
                     note.IsCompleted = true;
                     break;
